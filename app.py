@@ -8,6 +8,13 @@ app = Flask(__name__)#Фласк будет искать все файлы в э
 def index():
     return 'Главная страница' #Эта строка будет отображаться на главной странице
 
+@app.route('/blog')
+def blog():
+    return 'Страница блога'
+
+@app.route('/news')
+def news():
+    return 'Страница новостей'
 
 
 
