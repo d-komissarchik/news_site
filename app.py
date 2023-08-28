@@ -1,20 +1,22 @@
 from flask import Flask
+from flask import render_template #функция которая позволяет возвращать html страницу
 
 
 app = Flask(__name__)#Фласк будет искать все файлы в этой папке
 
 
-@app.route('/')#юрл главная страница
+@app.route('/index.html')#юрл главная страница
 def index():
-    return 'Главная страница' #Эта строка будет отображаться на главной странице
+    return render_template('index.html') #пишем только название файла, т.к. фласк знает что все шаблоны лежат тут
 
 @app.route('/blog')
 def blog():
-    return 'Страница блога'
+    return render_template('blog.html')
 
-@app.route('/news')
+
+@app.route('/news.html')
 def news():
-    return 'Страница новостей'
+    return render_template('news.html')
 
 
 
