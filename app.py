@@ -1,9 +1,13 @@
 from flask import Flask
 from flask import render_template #функция которая позволяет возвращать html страницу
+from flask_sqlalchemy import SQLAlchemy
 
-
+db = SQLAlchemy()
 app = Flask(__name__)#Фласк будет искать все файлы в этой папке
-
+app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLAlCHEMY_TRACK_MODIFICATIONS'] = False
+#db = SQLAlchemy(app) # создаём БД
+db.init_app(app)
 
 @app.route('/')#юрл главная страница
 def index():
@@ -17,6 +21,8 @@ def blog():
 @app.route('/news.html')
 def news():
     return render_template('news.html')
+
+
 
 
 
